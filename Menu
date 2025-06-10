@@ -15,54 +15,98 @@ _G.lockPosition = false
 
 -- Frame principal
 local MainFrame = Instance.new("Frame")
-MainFrame.Size = UDim2.new(0, 600, 0, 300)
-MainFrame.Position = UDim2.new(0.5, -300, 0.5, -150)
-MainFrame.BackgroundColor3 = Color3.fromRGB(220, 220, 220)
+MainFrame.Size = UDim2.new(0, 600, 0, 400)
+MainFrame.Position = UDim2.new(0.5, -300, 0.5, -200)
+MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 MainFrame.BorderSizePixel = 0
 MainFrame.Parent = ScreenGui
 MainFrame.Active = true
 MainFrame.Draggable = true
+MainFrame.ClipsDescendants = true
 
--- TÃƒÆ’Ã‚Â­tulo
+local UICorner = Instance.new("UICorner", MainFrame)
+UICorner.CornerRadius = UDim.new(0, 12)
+
+-- Barra superior
+local TitleBar = Instance.new("Frame")
+TitleBar.Size = UDim2.new(1, 0, 0, 30)
+TitleBar.Position = UDim2.new(0, 0, 0, 0)
+TitleBar.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+TitleBar.BorderSizePixel = 0
+TitleBar.Parent = MainFrame
+
 local Title = Instance.new("TextLabel")
-Title.Size = UDim2.new(1, 0, 0, 25)
-Title.Position = UDim2.new(0, 0, 0, 0)
-Title.BackgroundColor3 = Color3.fromRGB(180, 180, 180)
+Title.Size = UDim2.new(1, -30, 1, 0)
+Title.Position = UDim2.new(0, 10, 0, 0)
+Title.BackgroundTransparency = 1
 Title.Text = "PHEONIX HUB"
-Title.TextColor3 = Color3.fromRGB(0, 0, 0)
-Title.Font = Enum.Font.SourceSansBold
-Title.TextSize = 18
-Title.Parent = MainFrame
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.Font = Enum.Font.GothamBold
+Title.TextSize = 20
+Title.TextXAlignment = Enum.TextXAlignment.Left
+Title.Parent = TitleBar
 
--- BotÃƒÆ’Ã‚Â³n minimizar
 local MinButton = Instance.new("TextButton")
-MinButton.Size = UDim2.new(0, 25, 0, 25)
+MinButton.Size = UDim2.new(0, 30, 1, 0)
 MinButton.Position = UDim2.new(1, -30, 0, 0)
 MinButton.Text = "-"
 MinButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-MinButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-MinButton.Parent = MainFrame
-
+MinButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+MinButton.Font = Enum.Font.Gotham
+MinButton.TextSize = 18
+MinButton.Parent = TitleBar
+local UICorner2 = Instance.new("UICorner", MinButton)
+UICorner2.CornerRadius = UDim.new(0, 6)
 
 -- Tabs y contenido
-local tabs = {"OpFarmeo", "Stats", "Killing", "Players", "Creditos"}
+local tabs = {"OpFarmeo", "Stats", "Killing", "Players", "Rocas", "Creditos"}
 local contentByTab = {
     ["OpFarmeo"] = {"Fast Rebith + Bugs", "Auto Fuerza Op", "Hide Frame", "Auto Fuerza", "Protein egg"},
     ["Killing"] = {"Auto Golpe", "Golpe Sin Animacion"},
     ["Stats"] = {"Check Stats"},
     ["Players"] = {"Lock Client Position", "Anti AFK"},
-    ["Creditos"] = "username: Demon_misteriousX", "nombre: XxAlejandroxX"
+    ["Rocas"] = {
+        "Roca de 10m", "Roca de 5m", "Roca de 1m",
+        "Roca de 750k", "Roca de 400k", "Roca de 150k",
+        "Roca de 5k", "Roca de 100", "Roca de 10", "Roca de 0"
+    },
+    ["Creditos"] = {
+        "username: Demon_misteriousX",
+        "nombre: XxAlejandroxX"
+    }
 }
+
 local currentTab = nil
 local tabButtons = {}
 local contentButtons = {}
 
--- Panel de pestaÃƒÆ’Ã‚Â±as
+-- Panel de pestaÃ±as adaptado
 local TabPanel = Instance.new("Frame")
 TabPanel.Size = UDim2.new(1, 0, 0, 30)
-TabPanel.Position = UDim2.new(0, 0, 0, 25)
-TabPanel.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+TabPanel.Position = UDim2.new(0, 0, 0, 30)
+TabPanel.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+TabPanel.BorderSizePixel = 0
 TabPanel.Parent = MainFrame
+
+local tabCount = #tabs
+for i, name in ipairs(tabs) do
+    local btn = Instance.new("TextButton")
+    btn.Size = UDim2.new(1 / tabCount, 0, 1, 0)
+    btn.Position = UDim2.new((i - 1) / tabCount, 0, 0, 0)
+    btn.Text = name
+    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    btn.Font = Enum.Font.Gotham
+    btn.TextSize = 16
+    btn.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+    btn.BorderSizePixel = 0
+    btn.Parent = TabPanel
+
+    btn.MouseButton1Click:Connect(function()
+        switchTab(name)
+    end)
+
+    tabButtons[name] = btn
+end
 
 -- Panel de contenido
 local ContentPanel = Instance.new("Frame")
@@ -71,10 +115,10 @@ ContentPanel.Position = UDim2.new(0, 0, 0, 55)
 ContentPanel.BackgroundColor3 = Color3.fromRGB(240, 240, 240)
 ContentPanel.Parent = MainFrame
 
--- Panel de estadÃƒÆ’Ã‚Â­sticas integrado (600x300 dentro del menÃƒÆ’Ã‚Âº)
+-- Panel de estadÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­sticas integrado (600x300 dentro del menÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âº)
 local statsPanel = Instance.new("ScrollingFrame")
-statsPanel.Position = UDim2.new(0, 250, 0, 55)
-statsPanel.Size = UDim2.new(0, 350, 1, -65)
+statsPanel.Position = UDim2.new(0, 220, 0, 55)
+statsPanel.Size = UDim2.new(0, 380, 1, -65)
 
 statsPanel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 statsPanel.BorderSizePixel = 0
@@ -127,15 +171,15 @@ Players.PlayerRemoving:Connect(function(player)
     end
 end)
 
--- AnimaciÃƒÆ’Ã‚Â³n del indicador
+-- AnimaciÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³n del indicador
 local function animateIndicator(indicator, isActive)
     local goalColor = isActive and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 50, 50)
-    local goalText = isActive and "✓" or "X"
+    local goalText = isActive and "âœ“" or "X"
     indicator.Text = goalText
     TweenService:Create(indicator, TweenInfo.new(0.25), {TextColor3 = goalColor}):Play()
 end
 
--- Cambiar de pestaÃƒÆ’Ã‚Â±a
+-- Cambiar de pestaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±a
 local function switchTab(tabName)
     if currentTab == tabName then return end
     currentTab = tabName
@@ -180,13 +224,13 @@ local y = 10
         local isActive = buttonStates[key] or false
 
         local container = Instance.new("Frame")
-        container.Size = UDim2.new(0, 220, 0, 30)
+        container.Size = UDim2.new(0, 195, 0, 25)
         container.Position = UDim2.new(0, 10, 0, y)
         container.BackgroundTransparency = 1
         container.Parent = ContentPanel
 
         local btn = Instance.new("TextButton")
-        btn.Size = UDim2.new(0, 180, 1, 0)
+        btn.Size = UDim2.new(0, 195, 1, 0)
         btn.Position = UDim2.new(0, 0, 0, 0)
         btn.Text = name
         btn.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -249,7 +293,12 @@ local y = 10
             if func then func() end
         end
 
-         if name == "Auto Fuerza" then
+         if name == "Roca de 10m" then
+             local func = loadstring(game:HttpGet("https://raw.githubusercontent.com/CTXxALEJANDROxX/Roca-10m/refs/heads/main/Roca%2010m", true))()
+             if func then func() end
+         end
+
+        if name == "Auto Fuerza" then
              local func = loadstring(game:HttpGet("https://raw.githubusercontent.com/CTXxALEJANDROxX/Auto-fuerza-normal/refs/heads/main/Fuerza%20normal", true))()
              if func then func() end
          end
@@ -261,16 +310,16 @@ local y = 10
 end)
 
         table.insert(contentButtons, container)
-        y = y + 35
+        y = y + 28
     end
     end
 end
 
--- Crear pestaÃƒÆ’Ã‚Â±as
+-- Crear pestaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±as
 local x = 0
 for _, name in ipairs(tabs) do
     local btn = Instance.new("TextButton")
-    btn.Size = UDim2.new(0, 100, 0, 30)
+    btn.Size = UDim2.new(0, 96, 0, 25)
     btn.Position = UDim2.new(0, x, 0, 0)
     btn.Text = name
     btn.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -278,14 +327,14 @@ for _, name in ipairs(tabs) do
     btn.Parent = TabPanel
     btn.MouseButton1Click:Connect(function() switchTab(name) end)
     tabButtons[name] = btn
-    x = x + 105
+    x = x + 100
 end
 
--- Activar primera pestaÃ±a
+-- Activar primera pestaÃƒÂ±a
 switchTab(lastTab)
--- Minimizar estilo con tamaÃ±o y ocultar contenido
-local fullHeight = 300
-local minimizedHeight = 30
+-- Minimizar estilo con tamaÃƒÂ±o y ocultar contenido
+local fullHeight = 400
+local minimizedHeight = 25
 local isMinimized = false
 
 MinButton.MouseButton1Click:Connect(function()
@@ -296,4 +345,3 @@ MinButton.MouseButton1Click:Connect(function()
     ContentPanel.Visible = not isMinimized
     statsPanel.Visible = not isMinimized and (currentTab == "Stats" or buttonStates["Stats_Check Stats"])
 end)
-
