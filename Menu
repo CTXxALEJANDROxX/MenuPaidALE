@@ -67,8 +67,8 @@ local contentByTab = {
     ["Players"] = {"Lock Client Position", "Anti AFK"},
     ["Rocas"] = {
         "Roca de 10m", "Roca de 5m", "Roca de 1m",
-        "Roca de 750k", "Roca de 400k", "Roca de 150k",
-        "Roca de 5k", "Roca de 100", "Roca de 10", "Roca de 0"
+        "Roca de 750k", "Roca de 150k",
+        "Roca de 5k", "Roca de 0"
     },
     ["Creditos"] = {
         "username: Demon_misteriousX",
