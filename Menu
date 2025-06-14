@@ -61,7 +61,7 @@ UICorner2.CornerRadius = UDim.new(0, 6)
 -- Tabs y contenido
 local tabs = {"OpFarmeo", "Stats", "Killing", "Players", "Rocas", "Creditos"}
 local contentByTab = {
-    ["OpFarmeo"] = {"Fast Rebith + Bugs", "Auto Fuerza Op", "Hide Frame", "Auto Fuerza", "Protein egg", "Ocultar Particulas"},
+    ["OpFarmeo"] = {"Fast Rebith + Bugs", "Auto Fuerza Op", "Auto Fuerza", "Protein egg", "Ocultar Particulas"},
     ["Killing"] = {"Auto Golpe", "Golpe Sin Animacion"},
     ["Stats"] = {"Check Stats"},
     ["Players"] = {"Lock Client Position", "Anti AFK"},
