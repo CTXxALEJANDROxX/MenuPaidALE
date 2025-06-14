@@ -279,7 +279,7 @@ local y = 10
          end
 
          if name == "Golpe Sin Animacion" then
-             local func = loadstring(game:HttpGet("https://raw.githubusercontent.com/CTXxALEJANDROxX/Fast-Rebith-/refs/heads/main/Fast%20rebith", true))()
+             local func = loadstring(game:HttpGet("https://raw.githubusercontent.com/CTXxALEJANDROxX/CTX-crackeado/refs/heads/main/Auto%20golpe%20sin%20animaci%C3%B3n", true))()
              if func then func() end
          end
 
