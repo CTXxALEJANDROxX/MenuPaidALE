@@ -194,13 +194,14 @@ local function switchTab(tabName)
         local y = 10
         local lines = {
             "Este Script fue creado por:",
+
             "username: Demon_misteriousX",
 
             "Siganme en TikTok: @quiensabe_095",
 
             "Gracias por comprar este Script",
 
-            "Pronto mas Scrips como este y mas Op!"
+            "Pronto mas Scripts como este y mas Op!"
         }
 
         for _, text in ipairs(lines) do
@@ -448,6 +449,7 @@ end
 local startTime = tick()
 local startStrength = strengthStat.Value
 local startDurability = durabilityStat.Value
+local startRebirths = rebirthStat.Value
 
 RunService.RenderStepped:Connect(function()
 	if not personalStatsPanel.Visible then return end
@@ -460,11 +462,12 @@ RunService.RenderStepped:Connect(function()
 
 	local fuerza = strengthStat.Value - startStrength
 	local dura = durabilityStat.Value - startDurability
+	local rebirths = rebirthStat.Value - startRebirths
 
 	tiempoLabel.Text = string.format("Tiempo: %02d:%02d:%02d", h, m, s)
 	fuerzaLabel.Text = "Fuerza ganada: " .. abreviarNumero(fuerza)
 	durabilidadLabel.Text = "Durabilidad ganada: " .. abreviarNumero(dura)
-	renacimientosLabel.Text = "Renacimientos: " .. tostring(rebirthStat.Value)
+	renacimientosLabel.Text = "Renacimientos ganados: " .. tostring(rebirths)
 end)
 
 -- Mostrar solo si estÃ¡s en pestaÃ±a "Stats"
