@@ -153,6 +153,46 @@ local function updateLine(player, strength, durability, rebirths)
     )
 end
 
+
+-- FunciÃ³n para abreviar nÃºmeros
+local function abreviarNumero(num)
+	local abreviaciones = {
+		{valor = 1e15, sufijo = "Qa"},
+		{valor = 1e12, sufijo = "T"},
+		{valor = 1e9,  sufijo = "B"},
+		{valor = 1e6,  sufijo = "M"},
+		{valor = 1e3,  sufijo = "K"},
+	}
+	for _, ab in ipairs(abreviaciones) do
+		if num and num >= ab.valor then
+			return string.format("%.2f%s", num / ab.valor, ab.sufijo)
+		end
+	end
+	return tostring(num or "0")
+end
+
+-- Actualizar lÃ­nea con fuerza/durabilidad abreviada
+local function updateLine(player, strength, durability, rebirths)
+    if not playerLines[player] then
+        local label = Instance.new("TextLabel")
+        label.Size = UDim2.new(1, -4, 0, 20)
+        label.BackgroundTransparency = 1
+        label.TextColor3 = Color3.fromRGB(255, 255, 255)
+        label.Font = Enum.Font.SourceSans
+        label.TextSize = 14
+        label.TextXAlignment = Enum.TextXAlignment.Left
+        label.Parent = statsPanel
+        playerLines[player] = label
+    end
+
+    playerLines[player].Text = string.format("%s | Fuerza: %s | Dura: %s | Rebirths: %s",
+        player.Name,
+        abreviarNumero(strength),
+        abreviarNumero(durability),
+        tostring(rebirths or "N/A")
+    )
+end
+
 RunService.RenderStepped:Connect(function()
     if not statsPanel.Visible then return end
     for _, player in pairs(Players:GetPlayers()) do
@@ -194,14 +234,13 @@ local function switchTab(tabName)
         local y = 10
         local lines = {
             "Este Script fue creado por:",
-
             "username: Demon_misteriousX",
 
             "Siganme en TikTok: @quiensabe_095",
 
             "Gracias por comprar este Script",
 
-            "Pronto mas Scripts como este y mas Op!"
+            "Pronto mas Scrips como este y mas Op!"
         }
 
         for _, text in ipairs(lines) do
@@ -413,24 +452,6 @@ local renacimientosLabel = tiempoLabel:Clone()
 renacimientosLabel.Position = UDim2.new(0, 5, 0, 74)
 renacimientosLabel.Parent = personalStatsPanel
 
--- FunciÃ³n para abreviar
-local function abreviarNumero(num)
-	local abreviaciones = {
-		{valor = 1e15, sufijo = "Qa"},
-		{valor = 1e12, sufijo = "T"},
-		{valor = 1e9,  sufijo = "B"},
-		{valor = 1e6,  sufijo = "M"},
-		{valor = 1e3,  sufijo = "K"},
-	}
-	for _, ab in ipairs(abreviaciones) do
-		if num >= ab.valor then
-			return string.format("%.2f%s", num / ab.valor, ab.sufijo)
-		end
-	end
-	return tostring(num)
-end
-
--- Esperar a que carguen los stats
 local player = game:GetService("Players").LocalPlayer
 local RunService = game:GetService("RunService")
 
