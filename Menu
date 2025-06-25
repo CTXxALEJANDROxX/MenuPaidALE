@@ -67,8 +67,8 @@ local contentByTab = {
     ["Players"] = {"Lock Client Position", "Anti AFK"},
     ["Rocas"] = {
         "Roca de 10m", "Roca de 5m", "Roca de 1m",
-        "Roca de 750k", "Roca de 150k",
-        "Roca de 5k", "Roca de 0"
+        "Roca de 750k", "Roca de 400k", "Roca de 150k",
+        "Roca de 5k", "Roca de 100", "Roca de 10", "Roca de 0"
     },
     ["Creditos"] = {
         "username: Demon_misteriousX",
@@ -80,7 +80,7 @@ local currentTab = nil
 local tabButtons = {}
 local contentButtons = {}
 
--- Panel de pestaÃ±as adaptado
+-- Panel de pestaÃƒÂ±as adaptado
 local TabPanel = Instance.new("Frame")
 TabPanel.Size = UDim2.new(1, 0, 0, 30)
 TabPanel.Position = UDim2.new(0, 0, 0, 30)
@@ -115,7 +115,7 @@ ContentPanel.Position = UDim2.new(0, 0, 0, 55)
 ContentPanel.BackgroundColor3 = Color3.fromRGB(240, 240, 240)
 ContentPanel.Parent = MainFrame
 
--- Panel de estadÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­sticas integrado (600x300 dentro del menÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âº)
+-- Panel de estadÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â­sticas integrado (600x300 dentro del menÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Âº)
 local statsPanel = Instance.new("ScrollingFrame")
 statsPanel.Position = UDim2.new(0, 220, 0, 55)
 statsPanel.Size = UDim2.new(0, 380, 1, -65)
@@ -171,7 +171,7 @@ Players.PlayerRemoving:Connect(function(player)
     end
 end)
 
--- AnimaciÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³n del indicador
+-- AnimaciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n del indicador
 local function animateIndicator(indicator, isActive)
     local goalColor = isActive and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 50, 50)
     local goalText = isActive and "✓" or "X"
@@ -179,7 +179,7 @@ local function animateIndicator(indicator, isActive)
     TweenService:Create(indicator, TweenInfo.new(0.25), {TextColor3 = goalColor}):Play()
 end
 
--- Cambiar de pestaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±a
+-- Cambiar de pestaÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±a
 local function switchTab(tabName)
     if currentTab == tabName then return end
     currentTab = tabName
@@ -279,7 +279,7 @@ local y = 10
          end
 
          if name == "Golpe Sin Animacion" then
-             local func = loadstring(game:HttpGet("https://raw.githubusercontent.com/CTXxALEJANDROxX/CTX-crackeado/refs/heads/main/Auto%20golpe%20sin%20animaci%C3%B3n", true))()
+             local func = loadstring(game:HttpGet("https://raw.githubusercontent.com/CTXxALEJANDROxX/Fast-Rebith-/refs/heads/main/Fast%20rebith", true))()
              if func then func() end
          end
 
@@ -365,7 +365,7 @@ end)
     end
 end
 
--- Crear pestaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±as
+-- Crear pestaÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±as
 local x = 0
 for _, name in ipairs(tabs) do
     local btn = Instance.new("TextButton")
@@ -380,9 +380,102 @@ for _, name in ipairs(tabs) do
     x = x + 100
 end
 
--- Activar primera pestaÃƒÂ±a
+
+-- Panel adicional para contador personal en Stats
+local personalStatsPanel = Instance.new("Frame")
+personalStatsPanel.Size = UDim2.new(0, 195, 0, 100)
+personalStatsPanel.Position = UDim2.new(0, 10, 0, 40 + (#(contentByTab["Stats"]) * 28))
+personalStatsPanel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+personalStatsPanel.BackgroundTransparency = 0.2
+personalStatsPanel.Visible = false
+personalStatsPanel.Parent = ContentPanel
+
+local tiempoLabel = Instance.new("TextLabel")
+tiempoLabel.Size = UDim2.new(1, -10, 0, 20)
+tiempoLabel.Position = UDim2.new(0, 5, 0, 5)
+tiempoLabel.BackgroundTransparency = 1
+tiempoLabel.TextColor3 = Color3.new(1, 1, 1)
+tiempoLabel.Font = Enum.Font.SourceSansBold
+tiempoLabel.TextSize = 16
+tiempoLabel.TextXAlignment = Enum.TextXAlignment.Left
+tiempoLabel.Parent = personalStatsPanel
+
+local fuerzaLabel = tiempoLabel:Clone()
+fuerzaLabel.Position = UDim2.new(0, 5, 0, 28)
+fuerzaLabel.Parent = personalStatsPanel
+
+local durabilidadLabel = tiempoLabel:Clone()
+durabilidadLabel.Position = UDim2.new(0, 5, 0, 51)
+durabilidadLabel.Parent = personalStatsPanel
+
+local renacimientosLabel = tiempoLabel:Clone()
+renacimientosLabel.Position = UDim2.new(0, 5, 0, 74)
+renacimientosLabel.Parent = personalStatsPanel
+
+-- FunciÃ³n para abreviar
+local function abreviarNumero(num)
+	local abreviaciones = {
+		{valor = 1e15, sufijo = "Qa"},
+		{valor = 1e12, sufijo = "T"},
+		{valor = 1e9,  sufijo = "B"},
+		{valor = 1e6,  sufijo = "M"},
+		{valor = 1e3,  sufijo = "K"},
+	}
+	for _, ab in ipairs(abreviaciones) do
+		if num >= ab.valor then
+			return string.format("%.2f%s", num / ab.valor, ab.sufijo)
+		end
+	end
+	return tostring(num)
+end
+
+-- Esperar a que carguen los stats
+local player = game:GetService("Players").LocalPlayer
+local RunService = game:GetService("RunService")
+
+local function getStat(name)
+	local stats = player:FindFirstChild("leaderstats") or player:FindFirstChild("PlayerStats")
+	local stat = stats and stats:FindFirstChild(name)
+	return stat or player:FindFirstChild(name)
+end
+
+local strengthStat, durabilityStat, rebirthStat = getStat("Strength"), getStat("Durability"), getStat("Rebirths")
+while not (strengthStat and durabilityStat and rebirthStat) do
+	RunService.RenderStepped:Wait()
+	strengthStat, durabilityStat, rebirthStat = getStat("Strength"), getStat("Durability"), getStat("Rebirths")
+end
+
+local startTime = tick()
+local startStrength = strengthStat.Value
+local startDurability = durabilityStat.Value
+
+RunService.RenderStepped:Connect(function()
+	if not personalStatsPanel.Visible then return end
+
+	local now = tick()
+	local elapsed = now - startTime
+	local h = math.floor(elapsed / 3600)
+	local m = math.floor((elapsed % 3600) / 60)
+	local s = math.floor(elapsed % 60)
+
+	local fuerza = strengthStat.Value - startStrength
+	local dura = durabilityStat.Value - startDurability
+
+	tiempoLabel.Text = string.format("Tiempo: %02d:%02d:%02d", h, m, s)
+	fuerzaLabel.Text = "Fuerza ganada: " .. abreviarNumero(fuerza)
+	durabilidadLabel.Text = "Durabilidad ganada: " .. abreviarNumero(dura)
+	renacimientosLabel.Text = "Renacimientos: " .. tostring(rebirthStat.Value)
+end)
+
+-- Mostrar solo si estÃ¡s en pestaÃ±a "Stats"
+local originalSwitchTab = switchTab
+switchTab = function(tabName)
+	originalSwitchTab(tabName)
+	personalStatsPanel.Visible = (tabName == "Stats")
+end
+-- Activar primera pestaÃƒÆ’Ã‚Â±a
 switchTab(lastTab)
--- Minimizar estilo con tamaÃƒÂ±o y ocultar contenido
+-- Minimizar estilo con tamaÃƒÆ’Ã‚Â±o y ocultar contenido
 local fullHeight = 400
 local minimizedHeight = 25
 local isMinimized = false
