@@ -62,9 +62,9 @@ UICorner2.CornerRadius = UDim.new(0, 6)
 local tabs = {"OpFarmeo", "Stats", "Killing", "Players", "Rocas", "Teleport", "Creditos"}
 local contentByTab = {
     ["OpFarmeo"] = {"Fast Rebith + Bugs", "Auto Fuerza Op", "Auto Fuerza", "Protein egg", "Ocultar Particulas"},
-    ["Killing"] = {"Auto Golpe", "Golpe Sin Animacion"},
+    ["Killing"] = {"Auto Punch", "Auto Kill All", "Auto Kill Players", "Kills Muerto"},
     ["Stats"] = {"Check Stats"},
-    ["Players"] = {"Lock Client Position", "Anti AFK"},
+    ["Players"] = {"Lock Client Position", "Anti AFK", "Espectear"},
     ["Rocas"] = {
         "Roca de 10m", "Roca de 5m", "Roca de 1m",
         "Roca de 750k", "Roca de 400k", "Roca de 150k",
@@ -349,8 +349,8 @@ if name == "Tp king" then
               if func then func() end
           end
 
-          if name == "Auto Golpe" then
-             local func = loadstring(game:HttpGet("https://raw.githubusercontent.com/CTXxALEJANDROxX/Auto-golpe/refs/heads/main/Golpe", true))()
+          if name == "Kills Muerto" then
+             local func = loadstring(game:HttpGet("https://raw.githubusercontent.com/PheonixHub/Script-combinando-kill/refs/heads/main/Script%20para%20no%20comer%20eggs", true))()
              if func then func() end
          end
 
@@ -393,6 +393,18 @@ if name == "Tp king" then
              local func = loadstring(game:HttpGet("https://raw.githubusercontent.com/CTXxALEJANDROxX/Roca-de-1m/refs/heads/main/Roca%20de%201m", true))()
              if func then func() end
          end
+
+if name == "Auto Kill All" then
+                _G.lockPosition = isActive
+                local func = loadstring(game:HttpGet("https://raw.githubusercontent.com/PheonixHub/Auto-kill-all-/refs/heads/main/Auto%20kill%20para%20todos", true))
+                if func then func() end
+            end
+
+if name == "Auto Punch" then
+                _G.lockPosition = isActive
+                local func = loadstring(game:HttpGet("https://raw.githubusercontent.com/PheonixHub/Auto-punch-remote/refs/heads/main/Auto%20punch", true))
+                if func then func() end
+            end
 
         if name == "Roca de 750k" then
              local func = loadstring(game:HttpGet("https://raw.githubusercontent.com/CTXxALEJANDROxX/Roca-de-750k/refs/heads/main/Roca%20de%20750k", true))()
