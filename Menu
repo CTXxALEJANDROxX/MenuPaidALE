@@ -548,7 +548,7 @@ local isMinimized = false
 MinButton.MouseButton1Click:Connect(function()
     isMinimized = not isMinimized
     MinButton.Text = isMinimized and "+" or "-"
-    MainFrame.Size = UDim2.new(0, 600, 0, isMinimized and minimizedHeight or fullHeight)
+    MainFrame.Size = UDim2.new(0, 700, 0, isMinimized and minimizedHeight or fullHeight)
     TabPanel.Visible = not isMinimized
     ContentPanel.Visible = not isMinimized
     statsPanel.Visible = not isMinimized and (currentTab == "Stats" or buttonStates["Stats_Check Stats"])
