@@ -227,7 +227,7 @@ end)
 -- AnimaciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬ ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬ ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n del indicador
 local function animateIndicator(indicator, isActive)
     local goalColor = isActive and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 50, 50)
-    local goalText = isActive and "âœ“" or "X"
+    local goalText = isActive and "✓" or "X"
     indicator.Text = goalText
     TweenService:Create(indicator, TweenInfo.new(0.25), {TextColor3 = goalColor}):Play()
 end
