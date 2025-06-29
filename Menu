@@ -64,7 +64,7 @@ local contentByTab = {
     ["OpFarmeo"] = {"Fast Rebith + Bugs", "Auto Fuerza Op", "Auto Fuerza", "Protein egg", "Ocultar Particulas"},
     ["Stats"] = {"Check Stats"},
     ["Killing"] = {"Auto Punch", "Auto Kill All"},
-    ["Players"] = {"Lock Client Position", "Anti AFK", "Auto Punch", "Espectear"},
+    ["Players"] = {"Lock Client Position", "Anti AFK", "Espectear"},
     ["Rocas"] = {
         "Roca de 10m", "Roca de 5m", "Roca de 1m",
         "Roca de 750k", "Roca de 400k", "Roca de 150k",
