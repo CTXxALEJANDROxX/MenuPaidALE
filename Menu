@@ -61,7 +61,7 @@ UICorner2.CornerRadius = UDim.new(0, 6)
 -- Tabs y contenido
 local tabs = {"OpFarmeo", "Stats", "Killing", "Players", "Rocas", "Teleport", "Creditos"}
 local contentByTab = {
-    ["OpFarmeo"] = {"Fast Rebith + Bugs", "Auto Fuerza Op", "Auto Fuerza", "Auto Flexiones Con Dura", "Protein egg", "Ocultar Particulas"},
+    ["OpFarmeo"] = {"Fast Rebith + Bugs", "Auto Fuerza Op", "Auto Fuerza", "Auto Parado De Manos Con Dura""Auto Flexiones Con Dura", "Protein egg", "Ocultar Particulas"},
     ["Stats"] = {"Check Stats"},
     ["Killing"] = {"Auto Punch", "Auto Kill All"},
     ["Players"] = {"Lock Client Position", "Anti AFK", "Espectear"},
@@ -403,6 +403,11 @@ if name == "Tp king" then
 
         if name == "Hide Frame" then
             local func =loadstring(game:HttpGet("https://raw.githubusercontent.com/CTXxALEJANDROxX/Hide-frame/refs/heads/main/Particulas", true))()
+            if func then func() end
+        end
+
+if name == "Auto Parado De Manos Con Dura" then
+            local func =loadstring(game:HttpGet("", true))()
             if func then func() end
         end
 
