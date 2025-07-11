@@ -61,7 +61,7 @@ UICorner2.CornerRadius = UDim.new(0, 6)
 -- Tabs y contenido
 local tabs = {"OpFarmeo", "Stats", "Killing", "Players", "Rocas", "Teleport", "Creditos"}
 local contentByTab = {
-    ["OpFarmeo"] = {"Fast Rebith + Bugs", "Auto Fuerza Op", "Auto Fuerza", "Auto Parado De Manos Con Dura""Auto Flexiones Con Dura", "Protein egg", "Ocultar Particulas"},
+    ["OpFarmeo"] = {"Fast Rebith + Bugs", "Auto Fuerza Op", "Auto Fuerza", "Auto Parado De Manos Con Dura""Auto Flexiones Con Dura", "Auto Abdominales Con Dura ", "Protein egg", "Ocultar Particulas"},
     ["Stats"] = {"Check Stats"},
     ["Killing"] = {"Auto Punch", "Auto Kill All"},
     ["Players"] = {"Lock Client Position", "Anti AFK", "Espectear"},
@@ -407,7 +407,12 @@ if name == "Tp king" then
         end
 
 if name == "Auto Parado De Manos Con Dura" then
-            local func =loadstring(game:HttpGet("", true))()
+            local func =loadstring(game:HttpGet("https://raw.githubusercontent.com/MainScriptMl/Handestan-con-dura-terminado/refs/heads/main/Parado%20se%20manos%20terminando", true))()
+            if func then func() end
+        end
+
+if name == "Auto Abdominales Con Dura" then
+            local func =loadstring(game:HttpGet("https://raw.githubusercontent.com/MainScriptMl/Abdominales-con-dura-terminado-/refs/heads/main/Abdominales%20terminado", true))()
             if func then func() end
         end
 
