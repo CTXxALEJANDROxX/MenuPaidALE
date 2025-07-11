@@ -342,7 +342,7 @@ if name == "Tp 1 Rebith" then
 
 if name == "Auto Flexiones Con Dura" then
                 _G.lockPosition = isActive
-                local func = loadstring(game:HttpGet("https://raw.githubusercontent.com/MainScriptMl/Abdominales-con-dura/refs/heads/main/Abdominales", true))
+                local func = loadstring(game:HttpGet("https://raw.githubusercontent.com/MainScriptMl/Pushups-con-dura-terminado/refs/heads/main/Este%20es%20el%20combinado", true))
                 if func then func() end
             end
 
