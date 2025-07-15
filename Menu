@@ -69,7 +69,7 @@ local contentByTab = {
         "Roca de 10m", "Roca de 5m", "Roca de 1m",
         "Roca de 750k", "Roca de 400k", "Roca de 150k",
         "Roca de 5k", "Roca de 100", "Roca de 10", "Roca de 0"},
-    ["Teleport"] = {"Tp 0 Rebiths", "Tp 1 Rebith", "Tp 5 Rebiths", "Tp 15 Rebiths", "Tp 30 Rebiths", "Tp king", "Tp jungla gym"},
+    ["Teleport"] = {"Tp 0 Rebiths", "Tp 1 Rebith", "Tp 5 Rebiths", "Tp 15 Rebiths", "Tp 30 Rebiths", "Tp king", "Tp jungla gym", "Jungle Squat", "Jungle Lift"},
     ["Creditos"] = {
         "username: Demon_misteriousX",
         "nombre: XxAlejandroxX"
@@ -445,6 +445,18 @@ if name == "Auto Kill All" then
 if name == "Auto Punch" then
                 _G.lockPosition = isActive
                 local func = loadstring(game:HttpGet("https://raw.githubusercontent.com/PheonixHub/Auto-punch-remote/refs/heads/main/Auto%20punch", true))
+                if func then func() end
+            end
+
+       if name == "Jungle Lift" then
+                _G.lockPosition = isActive
+                local func = loadstring(game:HttpGet("https://raw.githubusercontent.com/MainScriptMl/Tp-a-lift-jungle/refs/heads/main/Tp%20jungle", true))
+                if func then func() end
+            end
+
+      if name == "Jungle Squat" then
+                _G.lockPosition = isActive
+                local func = loadstring(game:HttpGet("https://raw.githubusercontent.com/MainScriptMl/Tp-squat-jungle/refs/heads/main/Jungle", true))
                 if func then func() end
             end
 
